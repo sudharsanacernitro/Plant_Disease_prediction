@@ -40,7 +40,7 @@ class _ChatScreenState extends State<normal_ChatScreen> {
       final Dio dio = Dio();
 
     // Simulate a network call with Dio
-    final data={'query':_messages.last.text};
+    final data={'query':_messages.last.text,'lang':'en_US'};
     try {
       final response = await dio.post('http://${widget.ip}:5000/common_reply',
       data: data,
@@ -61,7 +61,15 @@ class _ChatScreenState extends State<normal_ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+       appBar: AppBar(
+        title: const Text(
+          'GROOT',
+          style: TextStyle(color: Colors.white),
+        ),
+        automaticallyImplyLeading: false, // Removes the back button
+        centerTitle: true,
+        backgroundColor: Colors.black,
+      ),
       body: Column(
         children: <Widget>[
           Expanded(

@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'layout_page.dart';
-import '../camera_screen/camera_screen.dart';
+import '../camera_screen/online_pred_screen.dart';
 import '../post/post.dart';
 import '../general_AI/common_ai.dart';
 
@@ -21,10 +21,10 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
   // Method to generate the widget options list
   List<Widget> _getWidgetOptions() {
     return <Widget>[
-      Home(),
-      Camera(ip: widget.ip,lang:widget.lang),  // Use widget.ip to pass the IP address
+      Home(ip:widget.ip),
+      Modelselector(ip: widget.ip,lang:widget.lang),  // Use widget.ip to pass the IP address
       normal_ChatScreen(ip:widget.ip),
-      MyForm()
+      ProfilePage(ip:widget.ip)
     ];
   }
 
@@ -37,14 +37,7 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'ZORA',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.black,
-      ),
+     
       body: Center(
         child: _getWidgetOptions().elementAt(_selectedIndex), // Generate widget list dynamically
       ),

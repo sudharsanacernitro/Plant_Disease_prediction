@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dio/dio.dart';
-import 'msg.dart';
+
+import 'chatbot/msg.dart';
 
 class Broker extends StatefulWidget {
 
  final String ip;
  final String file_path;
-  const Broker({Key? key,required this.ip,required this.file_path}) : super(key: key);
+ final String insertion_id;
+  const Broker({Key? key,required this.ip,required this.file_path,required this.insertion_id}) : super(key: key);
   @override
   State<Broker> createState() => _HomeState();
 }
@@ -58,7 +60,7 @@ class _HomeState extends State<Broker> {
           // Once data is received, load your main widgets
               if(snapshot.data?['error']==false)
               {
-                return ChatScreen(ip:widget.ip);
+                return ChatPage(ip:widget.ip,insertion_id:widget.insertion_id);
               }
               else{
                 print(snapshot.data);
