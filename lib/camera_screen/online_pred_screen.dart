@@ -109,6 +109,7 @@ class __CameraState extends State<Camera> {
     Translator translator = Translator();
    LatLng? mylocation;
 
+  dynamic cat=['Apple','Potato','Corn','grapes','paddy',];
   @override
   Widget build(BuildContext context) {
           String selectedLanguage = widget.lang; // Default language
@@ -162,13 +163,20 @@ class __CameraState extends State<Camera> {
                   const SizedBox(width: 20,),
                   DropdownButton<String>(
                 value: data_file,
-                items: <String>['Apple','Potato','Corn','grapes','paddy',]
+                items:imgtype=="Leaf"? <String>['Apple','Potato','Corn','grapes','paddy',]
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value,style: TextStyle(color:Colors.black),),
                   );
-                }).toList(),
+                }).toList() :   <String>['Apple','Potato']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value,style: TextStyle(color:Colors.black),),
+                  );
+                }).toList()
+                ,
                 onChanged: (String? newValue) {
                   setState(() {
                     data_file = newValue!;
@@ -185,7 +193,6 @@ class __CameraState extends State<Camera> {
                 TextButton.icon(
               onPressed: () {
                 // Add your onPressed code here!
-                print('TextButton Pressed');
                 getimg('camera');
               },
               icon: const Icon(Icons.photo_camera,size: 50,color:Colors.black,), // The icon
@@ -196,7 +203,6 @@ class __CameraState extends State<Camera> {
                TextButton.icon(
               onPressed: () {
                 // Add your onPressed code here!
-                print('TextButton Pressed');
                 getimg('gallery');
               },
               icon: const Icon(Icons.photo_album,size: 40,color:Colors.black,), // The icon
@@ -204,7 +210,18 @@ class __CameraState extends State<Camera> {
                      // The text
                         ),
               ],
-            ),
+            )
+            
+            // ,TextButton.icon(
+            //   onPressed: () {
+                
+            //   },
+            //   icon: const Icon(Icons.post_add,size: 40,color:Colors.black,), // The icon
+            //   label:Text("Additional Info",style: TextStyle(color: Colors.black,fontSize: 20,fontFamily:AutofillHints.addressCity),), 
+            //          // The text
+            //             ),
+
+
           ],
           
         )
@@ -256,14 +273,13 @@ Future<void> postInfo() async {
             print(response.data); // Print the response data
             if(response.data['diseased']==true)
             {
-              print(response.data['insert_id']);
-               _showDialog('Diseased', response.data['result'],response.data['insert_id']);
+              print(response.data);
+               _showDialog('Diseased', response.data['result'],response.data['insert_id'],response.data['ref']);
             } 
             else
             {
-             _showDialog('Healthy', response.data['result'],response.data['insert_id']);
+             _show_img_err();
             }
-            
           }
            else {
             print('Failed to post data');
@@ -302,7 +318,7 @@ Future<void> _showEnableLocationDialog(BuildContext context) async {
   );
 }
 
- void _showDialog(String title, String message,String id) {
+ void _showDialog(String title, String message,String id,String ref) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -311,16 +327,23 @@ Future<void> _showEnableLocationDialog(BuildContext context) async {
           content: Text('Disease Name: '+message),
           actions: [
             TextButton(
-              child: Text('OK'),
+              child: Text('Proceed'),
               onPressed: () {
                 
                  Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Broker(ip: widget.ip, file_path: message+".txt",insertion_id:id),
+                    builder: (context) => Broker(ip: widget.ip, file_path: message+".txt",insertion_id:id,disease:ref,disease_name:message),
                   ),
                 );
 
+              },
+            ),
+
+            TextButton(
+              child: Text('Back'),
+              onPressed: () {  
+                 Navigator.pop(context);
               },
             ),
           ],
@@ -330,6 +353,26 @@ Future<void> _showEnableLocationDialog(BuildContext context) async {
   }
 
 
+
+ void _show_img_err() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text("Ensure The image is correct"),
+          actions: [
+            TextButton(
+              child: Text('Back'),
+              onPressed: () {  
+                 Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 }
 

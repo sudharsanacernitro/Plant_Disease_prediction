@@ -44,7 +44,7 @@ class SampleCard extends StatelessWidget {
                   // ),
                   CircleAvatar(
                   radius: 80,
-                backgroundImage: NetworkImage('http://${ip}:5000/post_img/$img_path'),
+                backgroundImage: NetworkImage('$img_path'),
                   backgroundColor: Colors.grey,
                 ),
                   Padding(

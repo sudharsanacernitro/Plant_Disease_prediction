@@ -98,6 +98,7 @@ class _HomeState extends State<Home> {
         dynamic data = response.data['Data'];
 
         for (dynamic i in data) {
+          print(i);
           LatLng location = LatLng(i['coordinates'][0], i['coordinates'][1]);
           locationsToPass.add(location);
           diseased_area.add(i['Disease-name']);
@@ -107,9 +108,35 @@ class _HomeState extends State<Home> {
             crop_name: i['plant-name'],
             img_path: i['img'],
             area: i['district'],
-            solution:i['Ai_solution'],
+            solution:(i['Ai_solution']!=Null)?i['Ai_solution']:"No info provided",
           ));
+
+          print(i);
         }
+
+        // //for mysql db
+        // for (dynamic i in data) {
+        //   print(i);
+          
+        //   // Check if 'coordinates' is a list
+          
+        //     double lat = i[4] is String ? double.parse(i[4]) : i[4];
+        //     double lng = i[5] is String ? double.parse(i[5]) : i[5];
+
+        //     LatLng location = LatLng(lat, lng);
+        //     locationsToPass.add(location);
+          
+        //   diseased_area.add(i[7]);
+        //   allCards.add(SampleCard(
+        //     ip: widget.ip,
+        //     cardName: i[7],
+        //     crop_name: i[3],
+        //     img_path: i[6],
+        //     area: i[1],
+        //     solution:  'No solution available', // Handle missing 'Ai_solution' key
+        //   ));
+        // }
+
 
         setState(() {
           allCards = allCards;

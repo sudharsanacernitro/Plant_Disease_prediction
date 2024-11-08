@@ -8,8 +8,8 @@ class Broker extends StatefulWidget {
 
  final String ip;
  final String file_path;
- final String insertion_id;
-  const Broker({Key? key,required this.ip,required this.file_path,required this.insertion_id}) : super(key: key);
+ final String insertion_id,disease,disease_name;
+  const Broker({Key? key,required this.ip,required this.file_path,required this.insertion_id,required this.disease,required this.disease_name}) : super(key: key);
   @override
   State<Broker> createState() => _HomeState();
 }
@@ -60,7 +60,7 @@ class _HomeState extends State<Broker> {
           // Once data is received, load your main widgets
               if(snapshot.data?['error']==false)
               {
-                return ChatPage(ip:widget.ip,insertion_id:widget.insertion_id);
+                return ChatPage(ip:widget.ip,insertion_id:widget.insertion_id,disease:widget.disease,disease_name:widget.disease_name);
               }
               else{
                 print(snapshot.data);

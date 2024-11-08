@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:dio/dio.dart';
 
 import 'ip_config.dart'; 
 import 'locatin.dart';
@@ -17,12 +18,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _districtController = TextEditingController();
+    final TextEditingController _contactController = TextEditingController();
+
   
   LatLng? _selectedLocation; // Declared variable to store selected location
 
@@ -31,18 +32,41 @@ class _LoginScreenState extends State<LoginScreen> {
     String name = _nameController.text;
     String address = _addressController.text;
     String district = _districtController.text;
+    String contact = _contactController.text;
 
+    dynamic data={'email':email,'name':name,'addr':address,'dist':district,"contact":contact};
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isLoggedIn', true);
-    await prefs.setString('email', email);
-    await prefs.setString('name', name);
-    await prefs.setString('address', address);
-    await prefs.setString('district', district);
+    
 
-    Navigator.pushReplacement(
+    try {
+      // Send the message to the backend
+      Response response = await Dio().post(
+        'http://${widget.ip}:5000/login', // Replace with your actual API endpoint
+        data:data
+      );
+
+      if (response.statusCode == 200) {
+        await prefs.setBool('isLoggedIn', true);
+        await prefs.setString('email', email);
+        await prefs.setString('name', name);
+        await prefs.setString('address', address);
+        await prefs.setString('district', district);
+        await prefs.setString('contact', contact);
+        print("login successfull");
+        Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => BottomNavigationBarExample(ip: widget.ip,lang:widget.lang)),
     );
+       
+      } else {
+        print("unsusccessfull");
+      }
+    } catch (e) {
+      print("Error sending message: $e");
+     
+    }
+
+    
   }
 
   @override
@@ -80,6 +104,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: _districtController,
                   decoration: InputDecoration(labelText: 'District'),
+                ),
+                TextField(
+                  controller: _contactController,
+                  decoration: InputDecoration(labelText: 'Contact Number'),
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
