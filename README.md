@@ -26,16 +26,30 @@ GROOT is an innovative, cross-platform mobile and web application developed to a
   <div>
     <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/f0y3ijl69xqycptngiwi.jpg" alt="App Screenshot" width="400"/>
     <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038659/screenshot/dbiw6bpbeg4pyyn4fgbq.jpg" alt="App Screenshot" width="400"/>
-    <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/eev5pws7yzlig7prmsdm.jpg" alt="App Screenshot" width="400"/>
     
   </div>
+  <br>
   
   ## Home Page [Authorized data] and nearby Disease Outbreak
 
 <div>
-  <img src=" https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038656/screenshot/raev3ptxsqjpdmkrjuvl.jpg" alt="App Screenshot" width="400"/>
+  <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038656/screenshot/raev3ptxsqjpdmkrjuvl.jpg" alt="App Screenshot" width="400"/>
   
   <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038655/screenshot/gm0nhi2niohw3i0kvq2h.jpg" alt="App Screenshot" width="400"/>
+</div>
+<br>
+
+ ## Offline Disease Prediction and Prior Disease alert
+
+<div>
+<video src="https://res.cloudinary.com/ducl7cu1b/video/upload/v1731038694/screenshot/jh6f6vploewtnp3kj9ur.mp4" controls width="600">
+    Your browser does not support the video tag.
+</video>
+
+  <video src="https://res.cloudinary.com/ducl7cu1b/video/upload/v1731038689/screenshot/dykjtwmdrnpmvdp9qgyg.mp4" controls width="600">
+    Your browser does not support the video tag.
+</video>
+
 </div>
 
 
