@@ -24,12 +24,10 @@ GROOT is an innovative, cross-platform mobile and web application developed to a
 ## Chatbot
 <centre>
 <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/f0y3ijl69xqycptngiwi.jpg" alt="App Screenshot" width="400"/></centre>
+**Basic Awareness about the disease**
 
-<centre>
-<img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/f0y3ijl69xqycptngiwi.jpg" alt="App Screenshot" width="400"/></centre>
+<img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/f0y3ijl69xqycptngiwi.jpg" alt="App Screenshot" width="400"/>
 
-<centre>
-<img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/f0y3ijl69xqycptngiwi.jpg" alt="App Screenshot" width="400"/></centre>
 
 
 ## Data Utilization and Impact
