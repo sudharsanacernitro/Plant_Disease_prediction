@@ -20,6 +20,11 @@ GROOT is an innovative, cross-platform mobile and web application developed to a
 - **Machine Learning Models**: Inception v3, ResNet50, and MobileNet power high-accuracy image recognition capabilities optimized for mobile use.
 - **Conversational AI**: Fine-tuned with LLaMA2 to provide tailored advice and recommendations.
 - **Speech-to-Text Integration**: Allows easy interaction with the app, even for farmers with limited literacy.
+  
+## Chatbot
+
+<img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/f0y3ijl69xqycptngiwi.jpg" alt="App Screenshot" width="400"/>
+
 
 ## Data Utilization and Impact
 
