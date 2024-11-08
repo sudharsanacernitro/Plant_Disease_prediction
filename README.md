@@ -42,7 +42,7 @@ GROOT is an innovative, cross-platform mobile and web application developed to a
  ## Offline Disease Prediction and Prior Disease alert
 
 <div>
-<video src="https://res.cloudinary.com/ducl7cu1b/video/upload/v1731038694/screenshot/jh6f6vploewtnp3kj9ur.mp4" controls width="600">
+<video src="WhatsApp Video 2024-11-08 at 9.26.03 AM.mp4" controls width="600">
     Your browser does not support the video tag.
 </video>
 
