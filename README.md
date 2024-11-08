@@ -26,8 +26,16 @@ GROOT is an innovative, cross-platform mobile and web application developed to a
   <div>
     <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/f0y3ijl69xqycptngiwi.jpg" alt="App Screenshot" width="400"/>
 <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038659/screenshot/dbiw6bpbeg4pyyn4fgbq.jpg" alt="App Screenshot" width="400"/>
-  </div>
+  <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038658/screenshot/eev5pws7yzlig7prmsdm.jpg" alt="App Screenshot" width="400"/>
 
+  </div>
+##Home Page [Authorized data]
+
+<div>
+  <img src=" https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038656/screenshot/raev3ptxsqjpdmkrjuvl.jpg" alt="App Screenshot" width="400"/>
+  
+  <img src="https://res.cloudinary.com/ducl7cu1b/image/upload/v1731038655/screenshot/gm0nhi2niohw3i0kvq2h.jpg" alt="App Screenshot" width="400"/>
+</div>
 
 
 </div>
