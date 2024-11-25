@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import './current_loc.dart';
 
+
 class GoogleMaps extends StatefulWidget {
     final List<LatLng> locations; // Accept a list of locations
     final List<String> disease_name;
