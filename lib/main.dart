@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'camera_screen/online_pred_screen.dart';
+import 'Models/online_pred_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'g_map.dart';

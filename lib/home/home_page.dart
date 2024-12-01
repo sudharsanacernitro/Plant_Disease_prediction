@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'layout_page.dart';
-import '../camera_screen/online_pred_screen.dart';
+import '../Models/online_pred_screen.dart';
 import '../post/post.dart';
 import '../general_AI/chatbot/msg.dart';
 
