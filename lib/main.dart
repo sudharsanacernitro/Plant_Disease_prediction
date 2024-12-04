@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        fontFamily: 'comics',
+        scaffoldBackgroundColor: Colors.white, //Color.fromARGB(255, 2, 119, 31),
       ),
       //home: MapScreen(),
       home: Config(title: 'GROOT',),

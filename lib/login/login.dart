@@ -90,25 +90,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   backgroundColor: Colors.grey,
                 ),
                 TextField(
-                  controller: _emailController,
-                  decoration: InputDecoration(labelText: 'Email'),
+                  controller: _contactController,
+                  decoration: InputDecoration(labelText: 'Contact Number'),
                 ),
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(labelText: 'Name'),
                 ),
-                TextField(
-                  controller: _addressController,
-                  decoration: InputDecoration(labelText: 'Address'),
-                ),
+                // TextField(
+                //   controller: _addressController,
+                //   decoration: InputDecoration(labelText: 'Address'),
+                // ),
                 TextField(
                   controller: _districtController,
                   decoration: InputDecoration(labelText: 'District'),
                 ),
-                TextField(
-                  controller: _contactController,
-                  decoration: InputDecoration(labelText: 'Contact Number'),
-                ),
+               
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {

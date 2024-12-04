@@ -23,22 +23,17 @@ class Modelselector extends StatefulWidget {
 }
 
 class _Modelselector extends State<Modelselector> {
-  @override
-  
-
-
-   
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("GROOT"),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
+        title: Text("GROOT",style: TextStyle(fontFamily: 'crisp',color: Color.fromARGB(255, 119, 206, 121))),
+        backgroundColor: Color.fromARGB(255, 26, 27, 26),
+        toolbarHeight: 30,
         actions: [
             IconButton(
-              icon: Icon(Icons.video_camera_back_outlined),
+              icon: Icon(Icons.video_camera_back_outlined,color: Colors.blue,),
               onPressed: () {
                print("Video Model Clicked");
                Navigator.push(

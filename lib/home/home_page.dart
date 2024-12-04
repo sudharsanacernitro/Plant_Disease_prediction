@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'layout_page.dart';
@@ -7,8 +6,8 @@ import '../post/post.dart';
 import '../general_AI/chatbot/msg.dart';
 
 class BottomNavigationBarExample extends StatefulWidget {
-   final String ip,lang;
-  const BottomNavigationBarExample({Key? key,required this.ip,required this.lang}) : super(key: key);
+  final String ip, lang;
+  const BottomNavigationBarExample({Key? key, required this.ip, required this.lang}) : super(key: key);
 
   @override
   State<BottomNavigationBarExample> createState() =>
@@ -41,36 +40,53 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,  // Show only the selected tab
-        children: _widgetOptions, // Keep all the tabs in memory
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled, color: Colors.black),
-            label: 'Home',
-            backgroundColor: Color.fromARGB(255, 4, 151, 78),
+      body: Stack(
+        children: [
+          IndexedStack(
+            index: _selectedIndex, // Show only the selected tab
+            children: _widgetOptions, // Keep all the tabs in memory
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.upload_file_outlined, color: Colors.black),
-            label: 'Upload',
-            backgroundColor: Color.fromARGB(255, 4, 151, 78),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message_outlined, color: Colors.black),
-            label: 'AI-Chat',
-            backgroundColor: Color.fromARGB(255, 4, 151, 78),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.post_add, color: Colors.black),
-            label: 'Post',
-            backgroundColor: Color.fromARGB(255, 4, 151, 78),
+          Positioned(
+            bottom: 10, // Position the container above the screen bottom
+            left: 10, // Adjust for the left margin
+            right: 10, // Adjust for the right margin
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 1),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 26, 27, 26), // Adjust transparency
+                borderRadius: BorderRadius.circular(15), // Rounded corners
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26, // Shadow color
+                    blurRadius: 8, // Blur radius
+                    offset: Offset(0, 2), // Shadow offset
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.home_filled, color: const Color.fromARGB(255, 119, 206, 121)),
+                    onPressed: () => _onItemTapped(0),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.upload_file_outlined, color:   const Color.fromARGB(255, 119, 206, 121)),
+                    onPressed: () => _onItemTapped(1),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.message_outlined, color:   const Color.fromARGB(255, 119, 206, 121)),
+                    onPressed: () => _onItemTapped(2),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.post_add, color:   const Color.fromARGB(255, 119, 206, 121)),
+                    onPressed: () => _onItemTapped(3),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
       ),
     );
   }
