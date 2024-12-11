@@ -98,6 +98,7 @@ class _ChatScreenState extends State<normal_ChatScreen> {
               ],
             ),
           ),
+          SizedBox(height: 80,)
         ],
       ),
     );

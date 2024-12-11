@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'Models/online_pred_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import 'g_map.dart';
-import 'store_permission/download.dart';
 
-import 'login/login.dart';
 import 'login/ip_config.dart';
 
-void main() {
+import './global_settings.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); // Initialize Firebase
+  await GlobalSettings.instance.loadLanguage();
   runApp(const MyApp());
 }
 
@@ -22,13 +22,20 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primarySwatch: Colors.blue,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         fontFamily: 'comics',
         scaffoldBackgroundColor: Colors.white, //Color.fromARGB(255, 2, 119, 31),
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white), // Change color here
+        ),
       ),
       //home: MapScreen(),
       home: Config(title: 'GROOT',),
     );
   }
 }
+
+
+

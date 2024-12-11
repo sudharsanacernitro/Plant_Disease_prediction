@@ -7,6 +7,8 @@ import '../hindi_trans.dart';
 import '../home/home_page.dart';
 import 'login.dart';
 
+import 'language_change.dart';
+import '../global_settings.dart';
 
 class Config extends StatefulWidget {
   final String title;
@@ -57,29 +59,8 @@ class __ConfigState extends State<Config> {
                 isError: _isError,
                  // Pass error state to Textbox
               ),
-                  Text(
-                translator.translate(selectedLanguage, "select-language"),
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 214, 112, 29),
-                ),
-              ),
-                DropdownButton<String>(
-              value: selectedLanguage,
-              items: <String>['English', 'Hindi']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value,style: TextStyle(color:Colors.black),),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedLanguage = newValue!;
-                });
-              },
-            ),
+                
+                Change_language(),
              
               Container(
                 width: double.infinity,
@@ -134,6 +115,7 @@ class __ConfigState extends State<Config> {
           connectTimeout: Duration(milliseconds: 5000),
           receiveTimeout: Duration(milliseconds: 5000),
             );
+            GlobalSettings.instance.update_ip(ip);
 
         try {
         final response = await Dio(options).get(

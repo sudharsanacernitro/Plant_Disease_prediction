@@ -130,9 +130,9 @@ void _addReply(String reply) {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('GROOT'),
-          backgroundColor: const Color.fromARGB(255, 109, 183, 243),
-          centerTitle: true,
+          title: Text("GROOT",style: TextStyle(fontFamily: 'crisp',color: Color.fromARGB(255, 119, 206, 121))),
+        backgroundColor: Color.fromARGB(255, 26, 27, 26),
+        toolbarHeight: 30,
           automaticallyImplyLeading: false,
         ),
         body: Column(
@@ -155,7 +155,7 @@ void _addReply(String reply) {
                               child: Container(
                                 padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                  color: isUser ? Colors.blue : Colors.grey[300],
+                                  color: isUser ? Color.fromARGB(255, 26, 27, 26) : Colors.grey[300],
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Text(
@@ -196,7 +196,7 @@ void _addReply(String reply) {
                       IconButton(
                         icon: Icon(
                           _isListening ? Icons.mic : Icons.mic_none,
-                          color: _isListening ? Colors.red : Colors.blue,
+                          color: _isListening ? Colors.red :  Color.fromARGB(255, 26, 27, 26),
                         ),
                         iconSize: 40,
                         onPressed: _speechEnabled ? _toggleListening : null,
@@ -217,9 +217,11 @@ void _addReply(String reply) {
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),
+            SizedBox(height: 40,)
           ],
         ),
       );

@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'layout_page.dart';
-import '../Models/online_pred_screen.dart';
+import '../Models/Model_selector.dart';
 import '../post/post.dart';
 import '../general_AI/chatbot/msg.dart';
+import 'dart:developer' as devtools;
+import 'dart:io';
 
 class BottomNavigationBarExample extends StatefulWidget {
   final String ip, lang;
@@ -20,6 +21,9 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
   // Method to generate the widget options list
   late List<Widget> _widgetOptions;
 
+    List<String> fileNames = [];
+
+
   @override
   void initState() {
     super.initState();
@@ -29,7 +33,49 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
       General_chatPage(ip: widget.ip),
       ProfilePage(ip: widget.ip),
     ];
+        _offline_image_upload('/storage/emulated/0/Android/data/com.example.camera/files/Offline_images/'); // Replace with your directory path
+
   }
+
+
+ Future<void> _offline_image_upload(String directoryPath) async {
+  try {
+    final directory = Directory(directoryPath);
+    if (await directory.exists()) {
+      final files = directory.listSync();
+
+      fileNames = files
+           .map((file) => file.path)
+          .toList();
+
+      if(fileNames.length!=0)
+      {
+
+        return showDialog(context: context, builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Upload"),
+            content: Container(
+              child: Text("You have some offline images ,To validate it click on upload"),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text("Back"),
+              ),
+            ],
+          );
+        },);
+
+      }
+
+
+    } else {
+      devtools.log("Directory does not exist");
+    }
+  } catch (e) {
+    devtools.log("Error in listing files: $e");
+  }
+}
 
   void _onItemTapped(int index) {
     setState(() {

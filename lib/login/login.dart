@@ -4,9 +4,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:dio/dio.dart';
 
 import 'ip_config.dart'; 
-import 'locatin.dart';
+import 'location.dart';
 
 import '../home/home_page.dart';
+
+
+import 'package:camera/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -18,23 +23,62 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
   final TextEditingController _districtController = TextEditingController();
     final TextEditingController _contactController = TextEditingController();
 
+  String? firebase_key;
   
-  LatLng? _selectedLocation; // Declared variable to store selected location
+  List<LatLng>? _selectedLocation; // Declared variable to store selected location
+
+  @override
+  void initState() {
+    super.initState();
+    checkPreference();
+  }
+
+    Future<void> checkPreference() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); 
+
+    // Check if the key 'exampleKey' is set
+    if (!prefs.containsKey('firebase_key')) {
+        setupFirebaseMessaging();
+        await prefs.setString('firebase_key', firebase_key!);
+    }
+    else{
+      firebase_key=prefs.getString('firebase_key');
+    }
+  }
+
+
+  Future<void> setupFirebaseMessaging() async {
+      FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+      NotificationSettings settings = await messaging.requestPermission();
+      print("Notification permissions: ${settings.authorizationStatus}");
+
+      if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+        print('User granted permission');
+      } else {
+        print('User denied permission');
+      }
+
+    
+      firebase_key = await messaging.getToken();
+      
+  }
 
   void _login(BuildContext context) async {
-    String email = _emailController.text;
+
+    
     String name = _nameController.text;
-    String address = _addressController.text;
     String district = _districtController.text;
     String contact = _contactController.text;
+    
 
-    dynamic data={'email':email,'name':name,'addr':address,'dist':district,"contact":contact};
+    dynamic data={'name':name,'dist':district,"contact":contact,"farm_location":_selectedLocation,"Firebase_token":firebase_key};
     SharedPreferences prefs = await SharedPreferences.getInstance();
     
 
@@ -47,9 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (response.statusCode == 200) {
         await prefs.setBool('isLoggedIn', true);
-        await prefs.setString('email', email);
         await prefs.setString('name', name);
-        await prefs.setString('address', address);
         await prefs.setString('district', district);
         await prefs.setString('contact', contact);
         print("login successfull");
@@ -68,6 +110,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
     
   }
+
+ 
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (result != null) {
                       print(result);
                       setState(() {
-                        _selectedLocation = result as LatLng;
+                        _selectedLocation = result as List<LatLng>;
                       });
                     }
                   },
